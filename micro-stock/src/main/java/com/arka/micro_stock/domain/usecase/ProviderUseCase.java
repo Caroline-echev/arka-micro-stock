@@ -24,6 +24,13 @@ public class ProviderUseCase implements IProviderServicePort {
     }
 
 
+    @Override
+    public Flux<ProviderModel> getProviders( String country) {
+        return providerPersistencePort.findAll()
+                .filter(provider -> country == null ||
+                        (provider.getAddress() != null && provider.getAddress().toLowerCase().contains(country.toLowerCase())))
+                .sort(Comparator.comparing(ProviderModel::getName));
+    }
 
     private Mono<Void> validateUniqueNameAndEmail(ProviderModel provider) {
         return providerPersistencePort.existsByName(provider.getName())
