@@ -32,4 +32,10 @@ public class CountryAdapter implements ICountryPersistencePort {
     public Mono<Boolean> existsByLogisticsSupervisorId(Long supervisorId) {
         return countryRepository.existsByLogisticsSupervisorId(supervisorId);
     }
+
+    @Override
+    public Mono<CountryModel> findById(Long id) {
+        return countryRepository.findById(id)
+                .map(countryEntityMapper::toModel);
+    }
 }

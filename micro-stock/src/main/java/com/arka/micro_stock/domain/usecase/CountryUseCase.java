@@ -35,7 +35,11 @@ public class CountryUseCase implements ICountryServicePort {
                 .then(Mono.defer(() -> countryPersistence.saveCountry(country)));
     }
 
-
+    @Override
+    public Mono<CountryModel> getCountryById(Long id) {
+        return countryPersistence.findById(id)
+                .switchIfEmpty(Mono.error(new NotFoundException("Country not found")));
+    }
 
 
 }

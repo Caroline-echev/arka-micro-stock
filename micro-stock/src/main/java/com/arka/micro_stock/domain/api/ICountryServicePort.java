@@ -7,4 +7,5 @@ import reactor.core.publisher.Mono;
 public interface ICountryServicePort {
 
     Mono<Void> createCountry(CountryModel countryModel);
+    Mono<CountryModel> getCountryById(Long id);
 }

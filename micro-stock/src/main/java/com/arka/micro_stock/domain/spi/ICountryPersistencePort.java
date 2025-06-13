@@ -7,4 +7,5 @@ public interface ICountryPersistencePort {
     Mono<Void> saveCountry(CountryModel country);
     Mono<Boolean> existsByName(String name);
     Mono<Boolean> existsByLogisticsSupervisorId(Long supervisorId);
+    Mono<CountryModel> findById(Long id);
    }

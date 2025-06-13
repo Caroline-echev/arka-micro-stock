@@ -3,6 +3,7 @@ package com.arka.micro_stock.adapters.driving.reactive.controller;
 
 
 import com.arka.micro_stock.adapters.driving.reactive.dto.request.CountryRequest;
+import com.arka.micro_stock.adapters.driving.reactive.dto.response.CountryResponse;
 import com.arka.micro_stock.adapters.driving.reactive.mapper.ICountryDtoMapper;
 import com.arka.micro_stock.domain.api.ICountryServicePort;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,5 +30,11 @@ public class CountryController {
         return countryServicePort.createCountry(countryDtoMapper.toModel(request));
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "Get a country by id", description = "Get a country by id")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<CountryResponse> getCountryById(@PathVariable Long id) {
+        return countryServicePort.getCountryById(id).map(countryDtoMapper::toResponse);
+    }
 
 }
