@@ -11,6 +11,7 @@ import com.arka.micro_stock.domain.spi.IUserPersistencePort;
 import com.arka.micro_stock.domain.util.validation.CountryValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -40,6 +41,12 @@ public class CountryUseCase implements ICountryServicePort {
         return countryPersistence.findById(id)
                 .switchIfEmpty(Mono.error(new NotFoundException("Country not found")));
     }
+
+    @Override
+    public Flux<CountryModel> getAllCountries() {
+        return countryPersistence.findAllOrderByNameAsc();
+    }
+
 
 
 }

@@ -12,6 +12,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -36,5 +37,14 @@ public class CountryController {
     public Mono<CountryResponse> getCountryById(@PathVariable Long id) {
         return countryServicePort.getCountryById(id).map(countryDtoMapper::toResponse);
     }
+
+    @GetMapping
+    @Operation(summary = "List all countries alphabetically", description = "List all countries by name in ascending order")
+    @ResponseStatus(HttpStatus.OK)
+    public Flux<CountryResponse> getAllCountries() {
+        return countryServicePort.getAllCountries()
+                .map(countryDtoMapper::toResponse);
+    }
+
 
 }
