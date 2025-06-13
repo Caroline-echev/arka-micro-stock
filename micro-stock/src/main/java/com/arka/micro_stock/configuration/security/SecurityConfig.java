@@ -32,9 +32,13 @@ public class SecurityConfig {
                         ).permitAll()
 
                         .pathMatchers(HttpMethod.GET, "/api/countries/**").permitAll()
+                        .pathMatchers(HttpMethod.GET, "/api/providers/**").permitAll()
 
                         .pathMatchers(HttpMethod.POST, "/api/countries/**").hasRole("ADMIN")
                         .pathMatchers(HttpMethod.PUT, "/api/countries/**").hasRole("ADMIN")
+
+                        .pathMatchers(HttpMethod.POST, "/api/providers/**").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.PUT, "/api/providers/**").hasRole("ADMIN")
 
                         .anyExchange().authenticated()
                 )

@@ -1,0 +1,11 @@
+CREATE TABLE tb_providers (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    nit VARCHAR(20) NOT NULL,
+    name VARCHAR(60) NOT NULL UNIQUE,
+    description VARCHAR(200) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(16) NOT NULL,
+    address VARCHAR(500),
+    website VARCHAR(100) NOT NULL,
+    contact_name VARCHAR(100) NOT NULL
+);
