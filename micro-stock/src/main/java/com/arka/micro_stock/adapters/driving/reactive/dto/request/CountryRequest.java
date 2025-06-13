@@ -1,18 +1,22 @@
 package com.arka.micro_stock.adapters.driving.reactive.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import static com.arka.micro_catalog.adapters.util.BrandConstantsDriving.*;
+import static com.arka.micro_stock.adapters.util.CountryConstantsDriving.*;
+
 @Data
 @AllArgsConstructor
-public class BrandRequest {
+public class CountryRequest {
+
     @NotBlank(message = NAME_NOT_BLANK)
-    @Size( max = MAX_PAGE_SIZE, message =NAME_MAX_SIZE)
+    @Size(max = NAME_MAX_SIZE, message = NAME_MAX_SIZE_MESSAGE)
     private String name;
 
-    @NotBlank(message =DESCRIPTION_NOT_BLANK)
-    private String description;
+    @NotNull(message = DESCRIPTION_NOT_BLANK)
+    private Long logisticsSupervisorId;
+
 }

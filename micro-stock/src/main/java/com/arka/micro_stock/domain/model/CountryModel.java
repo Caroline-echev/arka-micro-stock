@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class BrandModel {
-
+public class CountryModel {
     private Long id;
     private String name;
-    private String description;
+    private Long logisticsSupervisorId;
+    private String status;
 }

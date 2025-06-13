@@ -1,4 +1,4 @@
-package com.arka.micro_catalog.domain.exception.error;
+package com.arka.micro_stock.domain.exception.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

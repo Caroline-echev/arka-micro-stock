@@ -1,4 +1,4 @@
-package com.arka.micro_catalog.adapters.driven.r2dbc.config;
+package com.arka.micro_stock.adapters.driven.r2dbc.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;

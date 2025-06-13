@@ -1,6 +1,6 @@
-package com.arka.micro_catalog.domain.exception;
+package com.arka.micro_stock.domain.exception;
 
-import com.arka.micro_catalog.domain.exception.error.ErrorCode;
+import com.arka.micro_stock.domain.exception.error.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

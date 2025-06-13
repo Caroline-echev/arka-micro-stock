@@ -1,4 +1,4 @@
-package com.arka.micro_catalog.configuration.bean;
+package com.arka.micro_stock.configuration.bean;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

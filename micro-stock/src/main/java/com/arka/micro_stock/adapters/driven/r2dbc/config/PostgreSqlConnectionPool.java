@@ -1,4 +1,4 @@
-package com.arka.micro_catalog.adapters.driven.r2dbc.config;
+package com.arka.micro_stock.adapters.driven.r2dbc.config;
 
 import io.r2dbc.pool.ConnectionPool;
 import io.r2dbc.pool.ConnectionPoolConfiguration;
@@ -8,7 +8,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.arka.micro_catalog.adapters.driven.r2dbc.util.ConstantsR2DBC.*;
+import static com.arka.micro_stock.adapters.driven.r2dbc.util.ConstantsR2DBC.*;
+
 
 @Configuration
 @EnableConfigurationProperties(PostgresqlConnectionProperties.class)

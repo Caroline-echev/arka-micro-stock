@@ -1,30 +1,28 @@
-package com.arka.micro_catalog.configuration.swagger;
-
+package com.arka.micro_stock.configuration.swagger;
+import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import org.springdoc.core.models.GroupedOpenApi;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import static com.arka.micro_catalog.configuration.util.ConstantsConfiguration.*;
-
 @Configuration
 public class SwaggerConfig {
-
     @Bean
-    public OpenAPI openAPI() {
+    public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title(API_TITLE)
-                        .description(API_DESCRIPTION)
-                        .version(API_VERSION));
+                        .title("Arka stock Management API")
+                        .version("v1.0")
+                        .description("API para gestión de stock"))
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth",
+                                new SecurityScheme()
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")));
     }
 
-    @Bean
-    public GroupedOpenApi publicApi() {
-        return GroupedOpenApi.builder()
-                .group(API_GROUP)
-                .pathsToMatch(API_PATHS)
-                .build();
-    }
 }

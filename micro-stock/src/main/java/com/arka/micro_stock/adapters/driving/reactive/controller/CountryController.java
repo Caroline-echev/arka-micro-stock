@@ -1,11 +1,10 @@
 package com.arka.micro_stock.adapters.driving.reactive.controller;
 
 
-import com.arka.micro_catalog.adapters.driving.reactive.dto.request.BrandRequest;
-import com.arka.micro_catalog.adapters.driving.reactive.dto.response.BrandResponse;
-import com.arka.micro_catalog.adapters.driving.reactive.dto.response.PaginationResponse;
-import com.arka.micro_catalog.adapters.driving.reactive.mapper.IBrandDtoMapper;
-import com.arka.micro_catalog.domain.api.IBrandServicePort;
+
+import com.arka.micro_stock.adapters.driving.reactive.dto.request.CountryRequest;
+import com.arka.micro_stock.adapters.driving.reactive.mapper.ICountryDtoMapper;
+import com.arka.micro_stock.domain.api.ICountryServicePort;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -14,46 +13,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import static com.arka.micro_catalog.adapters.util.CategoryConstantsDriving.*;
-
 @RestController
-@RequestMapping("/api/brands")
+@RequestMapping("/api/countries")
 @RequiredArgsConstructor
-@Tag(name = "Brand Controller", description = "Brand Controller Operations")
-public class BrandController {
+@Tag(name = "Country Controller", description = "Country Controller Operations")
+public class CountryController {
 
-    private final IBrandServicePort brandServicePort;
-    private final IBrandDtoMapper brandDtoMapper;
+    private final ICountryServicePort countryServicePort;
+    private final ICountryDtoMapper countryDtoMapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Create a new brand")
-    public Mono<Void> createBrand(@Valid @RequestBody BrandRequest request) {
-        return brandServicePort.createBrand(brandDtoMapper.toModel(request));
-    }
-    @GetMapping
-    @Operation(summary = "Get paginated and filtered brands")
-    public Mono<PaginationResponse<BrandResponse>> getBrands(
-            @RequestParam(defaultValue = PAGE_DEFAULT) int page,
-            @RequestParam(defaultValue = SIZE_DEFAULT) int size,
-            @RequestParam(defaultValue = SORT_DEFAULT) String sortDir,
-            @RequestParam(required = false) String search) {
-
-        return brandServicePort.getBrandsPaged(page, size, sortDir, search)
-                .flatMap(brandDtoMapper::toResponse);
+    @Operation(summary = "Create a new country", description = "Create a new country")
+    public Mono<Void> createCountry(@Valid @RequestBody CountryRequest request) {
+        return countryServicePort.createCountry(countryDtoMapper.toModel(request));
     }
 
-    @GetMapping("/{id}")
-    @Operation(summary = "Get brand by ID")
-    public Mono<BrandResponse> getBrandById(@PathVariable Long id) {
-        return brandServicePort.getBrandById(id)
-                .map(brandDtoMapper::toResponse);
-    }
-
-    @PutMapping("/{id}")
-    @Operation(summary = "Update an existing brand")
-    public Mono<Void> updateBrand(@PathVariable Long id, @Valid @RequestBody BrandRequest request) {
-        return brandServicePort.updateBrand(id, brandDtoMapper.toModel(request));
-    }
 
 }

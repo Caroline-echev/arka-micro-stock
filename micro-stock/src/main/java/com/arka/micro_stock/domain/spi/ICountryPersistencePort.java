@@ -1,13 +1,10 @@
 package com.arka.micro_stock.domain.spi;
 
-import com.arka.micro_catalog.domain.model.BrandModel;
-import com.arka.micro_catalog.domain.model.PaginationModel;
+import com.arka.micro_stock.domain.model.CountryModel;
 import reactor.core.publisher.Mono;
 
-public interface IBrandPersistencePort {
-    Mono<BrandModel> save(BrandModel user);
-    Mono<BrandModel> findByName(String name);
-    Mono<PaginationModel<BrandModel>> findAllPaged(int page, int size, String sortDir, String search);
-
-    Mono<BrandModel> findById(Long id);
-}
+public interface ICountryPersistencePort {
+    Mono<Void> saveCountry(CountryModel country);
+    Mono<Boolean> existsByName(String name);
+    Mono<Boolean> existsByLogisticsSupervisorId(Long supervisorId);
+   }

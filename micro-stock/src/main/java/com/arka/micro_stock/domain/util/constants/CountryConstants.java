@@ -1,10 +1,13 @@
 package com.arka.micro_stock.domain.util.constants;
 
-public class BrandConstants {
+public class CountryConstants {
 
-    private BrandConstants() {
+    private CountryConstants() {
         throw new IllegalStateException("Utility class");
     }
-    public static final String BRAND_ALREADY_EXISTS = "Brand already exists";
-    public static final String BRAND_NOT_FOUND = "Brand not found";
+
+    public static final String COUNTRY_NAME_LENGTH_ERROR = "Country name must be 1-60 characters";
+    public static final String COUNTRY_ALREADY_EXISTS = "Country name already exists";
+    public static final String SUPERVISOR_NOT_FOUND_OR_INVALID = "Supervisor not found or invalid role";
+
 }

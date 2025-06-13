@@ -1,4 +1,4 @@
-package com.arka.micro_catalog.adapters.driven.r2dbc.util;
+package com.arka.micro_stock.adapters.driven.r2dbc.util;
 
 
 public class ConstantsR2DBC {
@@ -9,10 +9,6 @@ public class ConstantsR2DBC {
     public static final int MAX_SIZE = 15;
     public static final int MAX_IDLE_TIME = 30;
     public static final String CONNECTION_POOL_NAME = "api-postgres-connection-pool";
-
     public static final String VALIDATION_QUERY = "SELECT 1";
-
-     public static final String SORT_DESC = "desc";
-     public static final String SORT_ASC = "asc";
 
 }

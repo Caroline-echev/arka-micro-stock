@@ -1,4 +1,4 @@
-package com.arka.micro_catalog.configuration.exception.handler;
+package com.arka.micro_stock.configuration.exception.handler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

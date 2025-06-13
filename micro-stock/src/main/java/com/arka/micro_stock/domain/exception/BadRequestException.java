@@ -1,11 +1,10 @@
-
-package com.arka.micro_catalog.domain.exception;
-
-import com.arka.micro_catalog.domain.exception.error.CommonErrorCode;
-import com.arka.micro_catalog.domain.exception.error.ErrorCode;
+package com.arka.micro_stock.domain.exception;
+import com.arka.micro_stock.domain.exception.error.CommonErrorCode;
+import com.arka.micro_stock.domain.exception.error.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import org.springframework.http.HttpStatus;
+
 @AllArgsConstructor
 @Builder
 public class BadRequestException extends BusinessException {

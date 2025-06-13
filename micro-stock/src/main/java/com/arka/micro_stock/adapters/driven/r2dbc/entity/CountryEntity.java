@@ -8,8 +8,8 @@ import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @AllArgsConstructor
-@Table("tb_brand")
-public class BrandEntity {
+@Table("tb_country")
+public class CountryEntity {
 
     @Id
     @Column("id")
@@ -18,7 +18,10 @@ public class BrandEntity {
     @Column("name")
     private String name;
 
-    @Column("description")
-    private String description;
+    @Column("logistics_supervisor_id")
+    private Long logisticsSupervisorId;
+
+    @Column("status")
+    private String status;
 
 }

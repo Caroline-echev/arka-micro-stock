@@ -1,8 +1,8 @@
-package com.arka.micro_catalog.configuration.exception.handler;
+package com.arka.micro_stock.configuration.exception.handler;
 
-import com.arka.micro_catalog.domain.exception.BusinessException;
-import com.arka.micro_catalog.domain.exception.error.CommonErrorCode;
-import com.arka.micro_catalog.domain.exception.error.ErrorCode;
+import com.arka.micro_stock.domain.exception.BusinessException;
+import com.arka.micro_stock.domain.exception.error.CommonErrorCode;
+import com.arka.micro_stock.domain.exception.error.ErrorCode;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.arka.micro_catalog.configuration.exception.handler.util.ExceptionHandlerConstants.VALIDATION_ERROR_CODE;
-import static com.arka.micro_catalog.configuration.exception.handler.util.ExceptionHandlerConstants.*;
-import static com.arka.micro_catalog.configuration.util.ConstantsConfiguration.*;
-
+import static com.arka.micro_stock.configuration.exception.handler.util.ExceptionHandlerConstants.*;
 
 @Configuration
 @Order(-2)

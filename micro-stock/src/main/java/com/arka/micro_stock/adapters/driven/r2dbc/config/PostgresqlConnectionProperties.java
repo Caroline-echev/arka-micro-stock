@@ -1,4 +1,4 @@
-package com.arka.micro_catalog.adapters.driven.r2dbc.config;
+package com.arka.micro_stock.adapters.driven.r2dbc.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
