@@ -32,6 +32,12 @@ public class ProviderUseCase implements IProviderServicePort {
                 .sort(Comparator.comparing(ProviderModel::getName));
     }
 
+    @Override
+    public Mono<ProviderModel> getProviderByName(String name) {
+        return providerPersistencePort.findByName(name);
+    }
+
+
     private Mono<Void> validateUniqueNameAndEmail(ProviderModel provider) {
         return providerPersistencePort.existsByName(provider.getName())
                 .flatMap(existsByName -> {

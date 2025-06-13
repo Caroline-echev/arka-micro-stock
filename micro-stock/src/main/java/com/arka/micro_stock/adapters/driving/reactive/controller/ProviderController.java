@@ -38,4 +38,10 @@ public class ProviderController {
                 .map(providerDtoMapper::toResponse);
     }
 
+    @GetMapping("/{name}")
+    @Operation(summary = "Get a provider by name", description = "Get a provider by name")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<ProviderResponse> getProviderByName(@PathVariable String name) {
+        return providerServicePort.getProviderByName(name).map(providerDtoMapper::toResponse);
+    }
 }

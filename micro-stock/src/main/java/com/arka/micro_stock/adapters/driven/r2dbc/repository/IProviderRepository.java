@@ -7,4 +7,5 @@ import reactor.core.publisher.Mono;
 public interface IProviderRepository extends ReactiveCrudRepository<ProviderEntity, Long> {
     Mono<ProviderEntity> findByName(String name);
     Mono<ProviderEntity> findByEmail(String email);
+
 }

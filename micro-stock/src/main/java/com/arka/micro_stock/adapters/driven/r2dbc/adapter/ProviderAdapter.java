@@ -39,6 +39,11 @@ public class ProviderAdapter implements IProviderPersistencePort {
                 .map(providerEntityMapper::toModel);
     }
 
+    @Override
+    public Mono<ProviderModel> findByName(String name) {
+        return providerRepository.findByName(name)
+                .map(providerEntityMapper::toModel);
+    }
 
 
 }
