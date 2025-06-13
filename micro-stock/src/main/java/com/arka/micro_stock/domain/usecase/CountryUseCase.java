@@ -47,6 +47,25 @@ public class CountryUseCase implements ICountryServicePort {
         return countryPersistence.findAllOrderByNameAsc();
     }
 
+    @Override
+    public Mono<Void> updateCountry(Long id, CountryModel countryModel) {
+        return countryPersistence.findById(id)
+                .switchIfEmpty(Mono.error(new NotFoundException("Country not found")))
+                .flatMap(existingCountry -> {
+                    countryModel.setId(id);
+                    return CountryValidator.validateCountryName(countryModel.getName(), countryPersistence);
+                })
+                .then(Mono.defer(() -> CountryValidator.validateSupervisorExists(
+                        countryModel.getLogisticsSupervisorId(),
+                        userPersistence
+                )))
+                .then(Mono.defer(() -> CountryValidator.validateSupervisorNotAssigned(
+                        countryModel.getLogisticsSupervisorId(),
+                        countryPersistence
+                )))
+                .then(Mono.defer(() -> countryPersistence.saveCountry(countryModel)));
+    }
+
 
 
 }

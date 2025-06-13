@@ -46,5 +46,12 @@ public class CountryController {
                 .map(countryDtoMapper::toResponse);
     }
 
+    @PutMapping("/{id}")
+    @Operation(summary = "Update a country by id", description = "Update a country by id")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Void> updateCountry(@PathVariable Long id, @Valid @RequestBody CountryRequest request) {
+        return countryServicePort.updateCountry(id, countryDtoMapper.toModel(request));
+    }
+
 
 }
