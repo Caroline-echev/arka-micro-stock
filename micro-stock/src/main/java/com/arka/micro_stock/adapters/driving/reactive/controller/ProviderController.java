@@ -44,4 +44,11 @@ public class ProviderController {
     public Mono<ProviderResponse> getProviderByName(@PathVariable String name) {
         return providerServicePort.getProviderByName(name).map(providerDtoMapper::toResponse);
     }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update a provider by id", description = "Update a provider by id")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<Void> updateProvider(@PathVariable Long id, @Valid @RequestBody ProviderRequest request) {
+        return providerServicePort.updateProvider(id, providerDtoMapper.toModel(request));
+    }
 }

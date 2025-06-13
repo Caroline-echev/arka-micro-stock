@@ -10,4 +10,5 @@ public interface IProviderPersistencePort {
     Mono<Boolean> existsByEmail(String email);
     Flux<ProviderModel> findAll();
     Mono<ProviderModel> findByName(String name);
+    Mono<ProviderModel> findById(Long id);
 }

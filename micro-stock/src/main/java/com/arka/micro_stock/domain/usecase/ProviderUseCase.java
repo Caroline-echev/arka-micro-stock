@@ -2,6 +2,7 @@ package com.arka.micro_stock.domain.usecase;
 
 import com.arka.micro_stock.domain.api.IProviderServicePort;
 import com.arka.micro_stock.domain.exception.DuplicateResourceException;
+import com.arka.micro_stock.domain.exception.NotFoundException;
 import com.arka.micro_stock.domain.model.ProviderModel;
 import com.arka.micro_stock.domain.spi.IProviderPersistencePort;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,16 @@ public class ProviderUseCase implements IProviderServicePort {
     @Override
     public Mono<ProviderModel> getProviderByName(String name) {
         return providerPersistencePort.findByName(name);
+    }
+
+    @Override
+    public Mono<Void> updateProvider(Long id, ProviderModel providerModel) {
+        return providerPersistencePort.findById(id)
+                .switchIfEmpty(Mono.error(new NotFoundException("Provider not found")))
+                .flatMap(existing -> {
+                    providerModel.setId(id);
+                    return providerPersistencePort.save(providerModel);
+                });
     }
 
 

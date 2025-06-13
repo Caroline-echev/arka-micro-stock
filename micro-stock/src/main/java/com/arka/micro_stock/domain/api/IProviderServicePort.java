@@ -8,4 +8,5 @@ public interface IProviderServicePort {
     Mono<Void> createProvider(ProviderModel providerModel);
     Flux<ProviderModel> getProviders( String country);
     Mono<ProviderModel> getProviderByName(String name);
+    Mono<Void> updateProvider(Long id,ProviderModel providerModel);
 }
