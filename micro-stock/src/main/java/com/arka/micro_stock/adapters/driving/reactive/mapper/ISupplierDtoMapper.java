@@ -1,8 +1,9 @@
 package com.arka.micro_stock.adapters.driving.reactive.mapper;
 
-import com.arka.micro_stock.adapters.driving.reactive.dto.request.ProviderRequest;
-import com.arka.micro_stock.adapters.driving.reactive.dto.response.ProviderResponse;
-import com.arka.micro_stock.domain.model.ProviderModel;
+import com.arka.micro_stock.adapters.driving.reactive.dto.request.AddressRequest;
+import com.arka.micro_stock.adapters.driving.reactive.dto.request.SupplierRequest;
+import com.arka.micro_stock.adapters.driving.reactive.dto.response.SupplierResponse;
+import com.arka.micro_stock.domain.model.SupplierModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -11,15 +12,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Mapper(componentModel = "spring")
-public interface IProviderDtoMapper {
+public interface ISupplierDtoMapper {
 
-    ProviderResponse toResponse(ProviderModel model);
+    SupplierResponse toResponse(SupplierModel model);
 
     @Mapping(target = "address", source = "address", qualifiedByName = "concatAddress")
-    ProviderModel toModel(ProviderRequest request);
+    SupplierModel toModel(SupplierRequest request);
 
     @Named("concatAddress")
-    default String concatAddress(com.arka.micro_stock.adapters.driving.reactive.dto.request.AddressRequest address) {
+    default String concatAddress(AddressRequest address) {
         if (address == null) return null;
 
         return Stream.of(

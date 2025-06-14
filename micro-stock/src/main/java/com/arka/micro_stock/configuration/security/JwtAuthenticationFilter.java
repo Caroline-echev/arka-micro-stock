@@ -39,7 +39,8 @@ public class JwtAuthenticationFilter implements WebFilter {
             "/webjars/**",
             "/favicon.ico",
             "/api/countries/**",
-            "/api/providers/**"
+            "/api/suppliers/**",
+            "/api/inventory/**"
     );
 
     @Override

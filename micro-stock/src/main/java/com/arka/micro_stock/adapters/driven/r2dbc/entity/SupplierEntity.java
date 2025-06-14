@@ -1,16 +1,19 @@
 package com.arka.micro_stock.adapters.driven.r2dbc.entity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("tb_providers")
+@Table("tb_suppliers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProviderEntity {
+public class SupplierEntity {
 
     @Id
     private Long id;

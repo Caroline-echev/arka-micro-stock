@@ -19,6 +19,10 @@ public class WebClientConfig {
     @Value("${webclient.user.base-url}")
     private String userBaseUrl;
 
+    @Value("${webclient.catalog.base-url}")
+    private String catalogBaseUrl;
+
+
     @Bean
     public WebClient userWebClient() {
         HttpClient httpClient = HttpClient.create()
@@ -30,6 +34,21 @@ public class WebClientConfig {
 
         return WebClient.builder()
                 .baseUrl(userBaseUrl)
+                .clientConnector(new ReactorClientHttpConnector(httpClient))
+                .build();
+    }
+
+    @Bean
+    public WebClient catalogWebClient() {
+        HttpClient httpClient = HttpClient.create()
+                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)
+                .responseTimeout(Duration.ofSeconds(5))
+                .doOnConnected(conn ->
+                        conn.addHandlerLast(new ReadTimeoutHandler(5, TimeUnit.SECONDS))
+                                .addHandlerLast(new WriteTimeoutHandler(5, TimeUnit.SECONDS)));
+
+        return WebClient.builder()
+                .baseUrl(catalogBaseUrl)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .build();
     }

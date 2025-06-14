@@ -32,14 +32,17 @@ public class SecurityConfig {
                         ).permitAll()
 
                         .pathMatchers(HttpMethod.GET, "/api/countries/**").permitAll()
-                        .pathMatchers(HttpMethod.GET, "/api/providers/**").permitAll()
+                        .pathMatchers(HttpMethod.GET, "/api/suppliers/**").permitAll()
 
                         .pathMatchers(HttpMethod.POST, "/api/countries/**").hasRole("ADMIN")
                         .pathMatchers(HttpMethod.PUT, "/api/countries/**").hasRole("ADMIN")
 
-                        .pathMatchers(HttpMethod.POST, "/api/providers/**").hasRole("ADMIN")
-                        .pathMatchers(HttpMethod.PUT, "/api/providers/**").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.POST, "/api/suppliers/**").hasRole("ADMIN")
+                        .pathMatchers(HttpMethod.PUT, "/api/suppliers/**").hasRole("ADMIN")
 
+                        .pathMatchers(HttpMethod.GET, "/api/inventory/**").hasAnyRole("LOGISTIC" , "ADMIN")
+                        .pathMatchers(HttpMethod.POST, "/api/inventory/**").hasAnyRole("LOGISTIC" , "ADMIN")
+                        .pathMatchers(HttpMethod.PUT, "/api/inventory/**").hasAnyRole("LOGISTIC" , "ADMIN")
                         .anyExchange().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)

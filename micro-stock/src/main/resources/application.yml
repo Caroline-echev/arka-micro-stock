@@ -37,6 +37,8 @@ server:
 webclient:
   user:
     base-url: http://localhost:8080/api/users
+  catalog:
+    base-url: http://localhost:8090/api/products
 
 resilience4j:
   circuitbreaker:

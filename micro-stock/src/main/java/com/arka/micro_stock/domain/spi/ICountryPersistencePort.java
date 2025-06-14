@@ -10,4 +10,5 @@ public interface ICountryPersistencePort {
     Mono<Boolean> existsByLogisticsSupervisorId(Long supervisorId);
     Mono<CountryModel> findById(Long id);
     Flux<CountryModel> findAllOrderByNameAsc();
+    Mono<Boolean> existsById(Long id);
    }

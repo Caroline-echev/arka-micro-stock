@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProviderResponse {
+public class SupplierResponse {
     private String nit;
     private String name;
     private String description;

@@ -1,6 +1,8 @@
 package com.arka.micro_stock.adapters.driving.reactive.dto.request;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -12,4 +14,6 @@ public class AddressRequest {
     private String street;
     private String nomenclature;
     private String observation;
+
+
 }

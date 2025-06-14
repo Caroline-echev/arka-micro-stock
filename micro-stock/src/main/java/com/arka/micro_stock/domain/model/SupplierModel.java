@@ -1,12 +1,15 @@
 package com.arka.micro_stock.domain.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProviderModel {
+public class SupplierModel {
     private Long id;
     private String nit;
     private String name;

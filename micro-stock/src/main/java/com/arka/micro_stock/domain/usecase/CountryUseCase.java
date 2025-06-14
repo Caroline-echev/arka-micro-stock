@@ -2,8 +2,6 @@ package com.arka.micro_stock.domain.usecase;
 
 
 import com.arka.micro_stock.domain.api.ICountryServicePort;
-import com.arka.micro_stock.domain.exception.BadRequestException;
-import com.arka.micro_stock.domain.exception.DuplicateResourceException;
 import com.arka.micro_stock.domain.exception.NotFoundException;
 import com.arka.micro_stock.domain.model.CountryModel;
 import com.arka.micro_stock.domain.spi.ICountryPersistencePort;

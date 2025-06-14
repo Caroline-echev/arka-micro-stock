@@ -6,7 +6,6 @@ import com.arka.micro_stock.domain.model.CountryModel;
 import com.arka.micro_stock.domain.spi.ICountryPersistencePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -44,6 +43,11 @@ public class CountryAdapter implements ICountryPersistencePort {
     public Flux<CountryModel> findAllOrderByNameAsc() {
         return countryRepository.findAllByOrderByNameAsc()
                 .map(countryEntityMapper::toModel);
+    }
+
+    @Override
+    public Mono<Boolean> existsById(Long id) {
+        return countryRepository.existsById(id);
     }
 
 }
