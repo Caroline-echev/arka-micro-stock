@@ -8,4 +8,8 @@ public interface IInventorySupplierPersistencePort {
    Mono<InventorySupplierModel> saveInventorySupplier(InventorySupplierModel inventorySupplierModel);
    Flux<InventorySupplierModel> getInventorySuppliersByInventoryId (Long inventoryId);
    Mono<Void>  deleteSupplierFromInventory (Long inventoryId, Long supplierId);
+   Mono<InventorySupplierModel> findByInventoryIdAndSupplierId (Long inventoryId, Long supplierId);
+   Mono<Void> save (InventorySupplierModel inventorySupplierModel);
 }
+
+

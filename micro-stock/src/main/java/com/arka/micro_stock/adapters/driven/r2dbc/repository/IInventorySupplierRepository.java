@@ -15,4 +15,9 @@ public interface IInventorySupplierRepository extends ReactiveCrudRepository<Inv
 
     @Query("delete from tb_inventory_supplier where inventory_id = :inventoryId and supplier_id = :supplierId")
     Mono<Void> deleteByInventoryIdAndSupplierId(Long inventoryId, Long supplierId);
+
+    @Query("select * from tb_inventory_supplier where inventory_id = :inventoryId and supplier_id = :supplierId")
+    Mono<InventorySupplierEntity> findByInventoryIdAndSupplierId (Long inventoryId, Long supplierId);
+
 }
+

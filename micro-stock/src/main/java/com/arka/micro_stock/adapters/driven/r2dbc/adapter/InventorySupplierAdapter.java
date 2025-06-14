@@ -36,4 +36,17 @@ public class InventorySupplierAdapter implements IInventorySupplierPersistencePo
         return inventorySupplierRepository.deleteByInventoryIdAndSupplierId(inventoryId, supplierId)
                 .then();
     }
+
+    @Override
+    public Mono<InventorySupplierModel> findByInventoryIdAndSupplierId(Long inventoryId, Long supplierId) {
+        return inventorySupplierRepository.findByInventoryIdAndSupplierId(inventoryId, supplierId)
+                .map(inventorySupplierMapper::toModel);
+    }
+
+    @Override
+    public Mono<Void> save(InventorySupplierModel inventorySupplierModel) {
+        return inventorySupplierRepository.save(inventorySupplierMapper.toEntity(inventorySupplierModel))
+                .then();
+    }
+
 }

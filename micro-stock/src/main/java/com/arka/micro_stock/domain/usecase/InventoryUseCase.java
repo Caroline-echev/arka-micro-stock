@@ -1,6 +1,7 @@
 package com.arka.micro_stock.domain.usecase;
 
 import com.arka.micro_stock.domain.api.IInventoryServicePort;
+import com.arka.micro_stock.domain.exception.BadRequestException;
 import com.arka.micro_stock.domain.model.CountryModel;
 import com.arka.micro_stock.domain.model.InventoryModel;
 import com.arka.micro_stock.domain.model.InventorySupplierModel;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -88,10 +90,37 @@ public class InventoryUseCase implements IInventoryServicePort {
                             .then();
                 });
     }
-
     @Override
     public Mono<Void> deleteSupplierFromInventory(Long inventoryId, Long supplierId) {
-        return inventorySupplierPersistencePort.deleteSupplierFromInventory(inventoryId, supplierId);
+        return inventorySupplierPersistencePort.findByInventoryIdAndSupplierId(inventoryId, supplierId)
+                .switchIfEmpty(Mono.error(new IllegalStateException("El proveedor no está asociado al inventario")))
+                .flatMap(ignored -> inventorySupplierPersistencePort.deleteSupplierFromInventory(inventoryId, supplierId));
+    }
+
+    @Override
+    public Mono<Void> updateSupplierPrice(Long inventoryId, Long supplierId, BigDecimal price) {
+        if (price == null) {
+            return Mono.error(new BadRequestException("El precio debe ser mayor a 0"));
+        }
+
+        return inventorySupplierPersistencePort.findByInventoryIdAndSupplierId(inventoryId, supplierId)
+                .switchIfEmpty(Mono.error(new BadRequestException("El proveedor no está asociado al inventario")))
+                .flatMap(existing -> {
+                    if (existing.getPrice().equals(price)) {
+                        return Mono.error(new BadRequestException("El nuevo precio es igual al actual"));
+                    }
+                    existing.setPrice(price);
+                    return inventorySupplierPersistencePort.save(existing).then();
+                });
+    }
+
+    @Override
+    public Mono<Void> addStockToInventory(Long inventoryId, Integer cantidad) {
+        return inventoryPersistencePort.getInventoryById(inventoryId)
+                .flatMap(savedInventory -> {
+                    savedInventory.setStockActual(savedInventory.getStockActual() + cantidad);
+                    return inventoryPersistencePort.save(savedInventory).then();
+                });
     }
 
 
