@@ -1,7 +1,9 @@
 package com.arka.micro_stock.domain.usecase;
 
 import com.arka.micro_stock.domain.api.IInventoryServicePort;
+import com.arka.micro_stock.domain.model.CountryModel;
 import com.arka.micro_stock.domain.model.InventoryModel;
+import com.arka.micro_stock.domain.model.InventorySupplierModel;
 import com.arka.micro_stock.domain.spi.*;
 import com.arka.micro_stock.domain.util.validation.InventoryValidator;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -46,5 +49,45 @@ public class InventoryUseCase implements IInventoryServicePort {
                 })
         );
     }
+
+    @Override
+    public Mono<InventoryModel> getInventoryByProductIdAndCountryId(Long productId, Long countryId) {
+        return inventoryPersistencePort.getInventoryByProductIdAndCountryId(productId, countryId)
+                .flatMap(inventoryModel ->
+                        inventorySupplierPersistencePort.getInventorySuppliersByInventoryId(inventoryModel.getId())
+                                .collectList()
+                                .map(suppliers -> {
+                                    inventoryModel.setSuppliers(suppliers);
+                                    return inventoryModel;
+                                })
+                );
+    }
+
+    @Override
+    public Flux<InventoryModel> getAllInventories() {
+        return inventoryPersistencePort.findAll()
+                .flatMap(inventory ->
+                        inventorySupplierPersistencePort.getInventorySuppliersByInventoryId(inventory.getId())
+                                .collectList()
+                                .map(suppliers -> {
+                                    inventory.setSuppliers(suppliers);
+                                    return inventory;
+                                })
+                );
+    }
+
+    @Override
+    public Mono<Void> addSuppliersToInventory(Long inventoryId, List<InventorySupplierModel> inventorySupplierModels) {
+        return inventoryPersistencePort.getInventoryById(inventoryId)
+                .flatMap(savedInventory -> {
+                    return Flux.fromIterable(inventorySupplierModels)
+                            .flatMap(inventorySupplierModel -> {
+                                inventorySupplierModel.setInventoryId(savedInventory.getId());
+                                return inventorySupplierPersistencePort.saveInventorySupplier(inventorySupplierModel);
+                            })
+                            .then();
+                });
+    }
+
 
 }

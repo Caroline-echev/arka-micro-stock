@@ -11,5 +11,7 @@ public interface IInventoryRepository extends ReactiveCrudRepository<InventoryEn
 
     @Query("select * from tb_inventory where product_id = :productId and country_id = :countryId")
     Mono<Boolean> existsByProductIdAndCountryId (Long productId, Long countryId);
+    @Query("select * from tb_inventory where product_id = :productId and country_id = :countryId")
+    Mono<InventoryEntity> findByProductIdAndCountryId(Long productId, Long countryId);
 
 }
