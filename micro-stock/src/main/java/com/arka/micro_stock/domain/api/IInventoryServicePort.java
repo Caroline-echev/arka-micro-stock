@@ -13,5 +13,5 @@ public interface IInventoryServicePort {
     Mono<InventoryModel> getInventoryByProductIdAndCountryId(Long productId, Long countryId);
     Flux<InventoryModel> getAllInventories();
     Mono<Void> addSuppliersToInventory(Long inventoryId, List<InventorySupplierModel> inventorySupplierModels);
-
+    Mono<Void> deleteSupplierFromInventory (Long inventoryId, Long supplierId);
 }

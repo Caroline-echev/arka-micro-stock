@@ -55,6 +55,14 @@ public class InventoryController {
         return inventoryServicePort.addSuppliersToInventory(inventoryId, inventoryDtoMapper.toSupplierModelList(supplierRequests));
     }
 
+    @DeleteMapping("/{inventoryId}/suppliers/{supplierId}")
+    @Operation(summary = "Eliminar un proveedor de un inventario")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Mono<Void> deleteSupplierFromInventory(
+            @PathVariable Long inventoryId,
+            @PathVariable Long supplierId) {
+        return inventoryServicePort.deleteSupplierFromInventory(inventoryId, supplierId);
+    }
 
 }
 

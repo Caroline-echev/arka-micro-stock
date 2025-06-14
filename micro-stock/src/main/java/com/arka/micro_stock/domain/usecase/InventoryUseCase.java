@@ -89,5 +89,10 @@ public class InventoryUseCase implements IInventoryServicePort {
                 });
     }
 
+    @Override
+    public Mono<Void> deleteSupplierFromInventory(Long inventoryId, Long supplierId) {
+        return inventorySupplierPersistencePort.deleteSupplierFromInventory(inventoryId, supplierId);
+    }
+
 
 }

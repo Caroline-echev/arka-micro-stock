@@ -30,4 +30,10 @@ public class InventorySupplierAdapter implements IInventorySupplierPersistencePo
                 .switchIfEmpty(Mono.error(new NotFoundException("No se encontraron proveedores para el inventario con ID " + inventoryId)))
                 .map(inventorySupplierMapper::toModel);
     }
+
+    @Override
+    public Mono<Void> deleteSupplierFromInventory(Long inventoryId, Long supplierId) {
+        return inventorySupplierRepository.deleteByInventoryIdAndSupplierId(inventoryId, supplierId)
+                .then();
+    }
 }
