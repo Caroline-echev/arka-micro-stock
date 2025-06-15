@@ -14,6 +14,8 @@ import reactor.core.publisher.Mono;
 
 import java.util.Collection;
 
+import static com.arka.micro_stock.domain.util.constants.InventoryConstants.*;
+
 public class InventoryValidator {
 
     private static final Logger log = LoggerFactory.getLogger(InventoryValidator.class);
@@ -24,18 +26,18 @@ public class InventoryValidator {
 
         if (inventoryModel.getStockActual() < inventoryModel.getStockMinimo()) {
             log.warn("Validation failed: Stock actual < Stock mínimo");
-            return Mono.error(new BadRequestException("The actual stock cannot be less than the minimum stock"));
+            return Mono.error(new BadRequestException(STOCK_VALIDATION_ERROR));
         }
         return Mono.empty();
     }
 
     public static Mono<Void> validateAtLeastOneSupplier(InventoryModel inventoryModel) {
-        log.info("Validating suppliers: count={}",
-                inventoryModel.getSuppliers() != null ? inventoryModel.getSuppliers().size() : 0);
+        int count = inventoryModel.getSuppliers() != null ? inventoryModel.getSuppliers().size() : 0;
+        log.info("Validating suppliers: count={}", count);
 
-        if (inventoryModel.getSuppliers() == null || inventoryModel.getSuppliers().isEmpty()) {
+        if (count == 0) {
             log.warn("Validation failed: No suppliers provided");
-            return Mono.error(new BadRequestException("At least one supplier is required"));
+            return Mono.error(new BadRequestException(SUPPLIER_REQUIRED_ERROR));
         }
         return Mono.empty();
     }
@@ -46,7 +48,7 @@ public class InventoryValidator {
                 .flatMap(exists -> {
                     if (!exists) {
                         log.warn("Validation failed: Product does not exist (id={})", productId);
-                        return Mono.error(new BadRequestException("El producto no existe"));
+                        return Mono.error(new BadRequestException(PRODUCT_NOT_FOUND_ERROR));
                     }
                     return Mono.empty();
                 });
@@ -58,14 +60,15 @@ public class InventoryValidator {
                 .flatMap(exists -> {
                     if (!exists) {
                         log.warn("Validation failed: Country does not exist (id={})", countryId);
-                        return Mono.error(new BadRequestException("The country does not exist"));
+                        return Mono.error(new BadRequestException(COUNTRY_NOT_FOUND_ERROR));
                     }
                     return Mono.empty();
                 });
     }
 
     public static Mono<Void> validateSuppliersExist(Iterable<InventorySupplierModel> suppliers, ISupplierPersistencePort supplierPersistencePort) {
-        log.info("Validating existence of {} suppliers", ((Collection<?>) suppliers).size());
+        int size = ((Collection<?>) suppliers).size();
+        log.info("Validating existence of {} suppliers", size);
         return Flux.fromIterable(suppliers)
                 .flatMap(s -> {
                     Long id = s.getSupplierId();
@@ -76,7 +79,7 @@ public class InventoryValidator {
                 .flatMap(allValid -> {
                     if (!allValid) {
                         log.warn("Validation failed: One or more suppliers do not exist");
-                        return Mono.error(new IllegalArgumentException("One or more of the suppliers does not exist"));
+                        return Mono.error(new BadRequestException(SUPPLIERS_NOT_FOUND_ERROR));
                     }
                     return Mono.empty();
                 });
@@ -88,7 +91,7 @@ public class InventoryValidator {
                 .flatMap(exists -> {
                     if (exists) {
                         log.warn("Validation failed: Product already exists in country");
-                        return Mono.error(new IllegalArgumentException("The product already exists in the country"));
+                        return Mono.error(new BadRequestException(PRODUCT_ALREADY_EXISTS_ERROR));
                     }
                     return Mono.empty();
                 });

@@ -6,16 +6,14 @@ public class ConstantsConfiguration {
     }
 
     public static final String MIGRATE = "migrate";
-
-
-    public static final String API_TITLE = "Micro Catalog API";
-    public static final String API_DESCRIPTION = "API for stock management";
-    public static final String API_VERSION = "v1.0";
-    public static final String API_GROUP = "catalog";
-    public static final String API_PATHS = "/api/**";
-
-
     public static final String BEARER = "Bearer ";
-    public static final int TOKEN_PREFIX_LENGTH = 7;
     public static final String ROLE_PREFIX = "ROLE_";
+
+    // Swagger constants
+    public static final String SWAGGER_TITLE = "Arka stock Management API";
+    public static final String SWAGGER_VERSION = "v1.0";
+    public static final String SWAGGER_DESCRIPTION = "API para gestión de stock";
+    public static final String SWAGGER_SECURITY_NAME = "bearerAuth";
+    public static final String SWAGGER_SECURITY_SCHEME = "bearer";
+    public static final String SWAGGER_BEARER_FORMAT = "JWT";
 }

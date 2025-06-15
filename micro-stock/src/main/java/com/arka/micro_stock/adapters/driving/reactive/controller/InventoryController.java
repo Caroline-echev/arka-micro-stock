@@ -64,15 +64,6 @@ public class InventoryController {
             @PathVariable Long supplierId) {
         return inventoryServicePort.deleteSupplierFromInventory(inventoryId, supplierId);
     }
-    @PatchMapping("/{inventoryId}/suppliers/{supplierId}/price")
-    @Operation(summary = "Actualizar precio de proveedor en inventario")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Mono<Void> updateSupplierPrice(
-            @PathVariable Long inventoryId,
-            @PathVariable Long supplierId,
-            @RequestParam BigDecimal newPrice) {
-        return inventoryServicePort.updateSupplierPrice(inventoryId, supplierId, newPrice);
-    }
 
     @PatchMapping("/{inventoryId}/stock")
     @Operation(summary = "Agregar stock a un inventario")

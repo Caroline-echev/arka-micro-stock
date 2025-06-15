@@ -52,12 +52,12 @@ public class JwtAuthenticationFilter implements WebFilter {
         }
 
         String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-
         if (authHeader == null || !authHeader.startsWith(BEARER)) {
+            log.debug("No valid Authorization header present");
             return chain.filter(exchange);
         }
 
-        String token = authHeader.substring(BEARER.length());
+        String token = authHeader.substring(BEARER.length()).trim();
 
         return jwtPersistencePort.validateToken(token)
                 .flatMap(isValid -> {
@@ -68,15 +68,14 @@ public class JwtAuthenticationFilter implements WebFilter {
                                         .contextWrite(Context.of("jwt-token", token))
                                 );
                     } else {
+                        log.warn("JWT token is invalid");
                         return unauthorized(exchange);
                     }
                 })
                 .onErrorResume(error -> {
-                    log.warn("Token validation failed: {}", error.getMessage());
-                    if (error.getMessage() != null &&
-                            (error.getMessage().toLowerCase().contains("expired") ||
-                                    error.getMessage().toLowerCase().contains("signature") ||
-                                    error.getMessage().toLowerCase().contains("malformed"))) {
+                    String message = error.getMessage();
+                    log.warn("Token validation failed: {}", message);
+                    if (message != null && isJwtError(message)) {
                         return unauthorized(exchange);
                     }
                     return Mono.error(error);
@@ -85,6 +84,11 @@ public class JwtAuthenticationFilter implements WebFilter {
 
     private boolean isExcludedPath(String path) {
         return EXCLUDED_PATHS.stream().anyMatch(path::startsWith);
+    }
+
+    private boolean isJwtError(String message) {
+        String lowerMsg = message.toLowerCase();
+        return lowerMsg.contains("expired") || lowerMsg.contains("signature") || lowerMsg.contains("malformed");
     }
 
     private Mono<Void> unauthorized(ServerWebExchange exchange) {
@@ -108,9 +112,7 @@ public class JwtAuthenticationFilter implements WebFilter {
             SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authority);
 
             return new UsernamePasswordAuthenticationToken(
-                    email,
-                    null,
-                    Collections.singletonList(grantedAuthority)
+                    email, token, Collections.singletonList(grantedAuthority)
             );
         });
     }

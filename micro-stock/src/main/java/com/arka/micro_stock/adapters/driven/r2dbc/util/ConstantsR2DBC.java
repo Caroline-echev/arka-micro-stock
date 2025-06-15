@@ -10,5 +10,5 @@ public class ConstantsR2DBC {
     public static final int MAX_IDLE_TIME = 30;
     public static final String CONNECTION_POOL_NAME = "api-postgres-connection-pool";
     public static final String VALIDATION_QUERY = "SELECT 1";
-
+    public static final String NO_SUPPLIERS_FOUND = "No suppliers found for inventory with ID ";
 }

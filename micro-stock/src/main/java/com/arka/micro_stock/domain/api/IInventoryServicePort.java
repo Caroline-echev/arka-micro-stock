@@ -20,7 +20,6 @@ public interface IInventoryServicePort {
 
     Mono<Void> deleteSupplierFromInventory(Long inventoryId, Long supplierId);
 
-    Mono<Void> updateSupplierPrice(Long inventoryId, Long supplierId, BigDecimal price);
 
     Mono<Void> addStockToInventory(Long inventoryId, Integer cantidad);
 

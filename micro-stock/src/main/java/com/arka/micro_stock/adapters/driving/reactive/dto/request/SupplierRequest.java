@@ -1,5 +1,6 @@
 package com.arka.micro_stock.adapters.driving.reactive.dto.request;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -8,36 +9,39 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import static com.arka.micro_stock.adapters.util.CountryConstantsDriving.*;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class SupplierRequest {
 
-    @NotBlank
-    @Pattern(regexp = "\\d+", message = "NIT must be numeric")
+    @NotBlank(message = NIT_REQUIRED)
+    @Pattern(regexp = REGEX_NUMERIC, message = NIT_NUMERIC)
     private String nit;
 
-    @NotBlank
-    @Size(max = 60)
+    @NotBlank(message = NAME_REQUIRED)
+    @Size(max = NAME_MAX_SIZE, message = NAME_MAX_LENGTH)
     private String name;
 
-    @NotBlank
-    @Size(max = 200)
+    @NotBlank(message = DESCRIPTION_REQUIRED)
+    @Size(max = DESCRIPTION_MAX_SIZE, message = DESCRIPTION_MAX_LENGTH)
     private String description;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = EMAIL_REQUIRED)
+    @Email(message = EMAIL_INVALID)
     private String email;
 
-    @NotBlank
-    @Pattern(regexp = "^\\+\\d{1,15}$", message = "Phone must start with + and contain up to 16 digits including the prefix")
+    @NotBlank(message = PHONE_REQUIRED)
+    @Pattern(regexp = REGEX_PHONE, message = PHONE_INVALID)
     private String phone;
 
+    @Valid
     private AddressRequest address;
 
-    @NotBlank
+    @NotBlank(message = WEBSITE_REQUIRED)
     private String website;
 
-    @NotBlank
+    @NotBlank(message = CONTACT_NAME_REQUIRED)
     private String contactName;
 }
