@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/micro-stock.iml" filepath="$PROJECT_DIR$/.idea/micro-stock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micro-stock/.idea/micro-stock.iml" filepath="$PROJECT_DIR$/micro-stock/.idea/micro-stock.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/micro-stock.micro-stock.main.iml" filepath="$PROJECT_DIR$/.idea/modules/micro-stock.micro-stock.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/micro-stock.micro-stock.main~1.iml" filepath="$PROJECT_DIR$/.idea/modules/micro-stock.micro-stock.main~1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/micro-stock.micro-stock.test~1.iml" filepath="$PROJECT_DIR$/.idea/modules/micro-stock.micro-stock.test~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micro-stock/.idea/modules/micro-stock.micro-stock.main~1.iml" filepath="$PROJECT_DIR$/micro-stock/.idea/modules/micro-stock.micro-stock.main~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micro-stock/.idea/modules/micro-stock.micro-stock.test~1.iml" filepath="$PROJECT_DIR$/micro-stock/.idea/modules/micro-stock.micro-stock.test~1.iml" />
     </modules>
   </component>
 </project>

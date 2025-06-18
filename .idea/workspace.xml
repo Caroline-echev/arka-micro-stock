@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6c143031-2878-4881-8537-610199d831fb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/micro-stock/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/gateway/adapter/HistoricalInventoryAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/gateway/dto/InventoryHistoryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/model/InventoryHistoryModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/model/UserInventoryHistoryModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/model/UserModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/spi/IAuthenticationPersistencePort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/spi/IHistoricalInventoryPersistencePort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/util/validation/HistoricalInventoryValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/micro-stock.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/micro-stock.micro-stock.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/security/AuthenticationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/security/AuthenticationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/webclient/ProductAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/webclient/ProductAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/webclient/UserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/adapters/driven/webclient/UserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/spi/IUserPersistencePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/spi/IUserPersistencePort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/usecase/InventoryUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/micro-stock/src/main/java/com/arka/micro_stock/domain/usecase/InventoryUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-stock/src/test/java/com/arka/micro_stock/MicroStockApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/micro-stock">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/micro-stock">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="micro-stock" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="micro-stock" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="micro-stock" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Caroline-echev&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Caroline-echev/arka-micro-stock.git&quot;,
+    &quot;accountId&quot;: &quot;2e951061-4fc4-4a96-99b5-728437bf999a&quot;
+  }
+}</component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2yYoDz7iPwC7YNzLH9Mu9cWjtwi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.micro-stock [:MicroStockApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.micro-stock [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.micro-stock [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/carolina.echeverri_p/OneDrive - Proteccion S.A/Documentos/arka/micro-stock&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.arka.micro_stock.domain.model" />
+      <recent name="com.arka.micro_stock.domain.spi" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\carolina.echeverri_p\OneDrive - Proteccion S.A\Documentos\arka\micro-stock" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\carolina.echeverri_p\OneDrive - Proteccion S.A\Documentos\arka\micro-stock\micro-stock" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MicroStockApplication">
+    <configuration name="MicroStockApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="DB_HOST" value="arka-db.cx2kocwy0nk9.us-east-2.rds.amazonaws.com" />
+        <env name="DB_USERNAME" value="postgres" />
+        <env name="DB_PASSWORD" value="postgres" />
+        <env name="JWT_SECRET" value="buP42/1FeXMwHJBrL6bfAeHZG9y0SAzGowCVciVc7YxwMyra92GB7XSfW3tcb3CKSg07IFXQqFw7+vh/bzBPNQ==" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.arka.micro_stock.MicroStockApplication" />
+      <module name="micro-stock.micro-stock.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.arka.micro_stock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="micro-stock [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/micro-stock" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="micro-stock [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/micro-stock" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.MicroStockApplication" />
+      <item itemvalue="Gradle.micro-stock [build]" />
+      <item itemvalue="Gradle.micro-stock [clean]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.micro-stock [build]" />
+        <item itemvalue="Gradle.micro-stock [clean]" />
+        <item itemvalue="Application.MicroStockApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c143031-2878-4881-8537-610199d831fb" name="Changes" comment="" />
+      <created>1750020752449</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750020752449</updated>
+    </task>
+    <servers />
+  </component>
+</project>

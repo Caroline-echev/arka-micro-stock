@@ -6,6 +6,7 @@ import com.arka.micro_stock.domain.exception.NotFoundException;
 import com.arka.micro_stock.domain.model.InventoryModel;
 import com.arka.micro_stock.domain.model.InventorySupplierModel;
 import com.arka.micro_stock.domain.spi.*;
+import com.arka.micro_stock.domain.util.validation.HistoricalInventoryValidator;
 import com.arka.micro_stock.domain.util.validation.InventoryValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class InventoryUseCase implements IInventoryServicePort {
     private final IProductPersistencePort productPersistencePort;
     private final ICountryPersistencePort countryPersistencePort;
     private final ISupplierPersistencePort supplierPersistencePort;
+    private final HistoricalInventoryValidator historicalInventoryValidator;
 
     @Override
     public Mono<Void> createInventory(InventoryModel inventoryModel) {
@@ -51,7 +53,10 @@ public class InventoryUseCase implements IInventoryServicePort {
                                     .flatMap(supplier -> {
                                         supplier.setInventoryId(savedInventory.getId());
                                         return inventorySupplierPersistencePort.saveInventorySupplier(supplier);
-                                    }).then()
+                                    }) .flatMap(savedSuppliers ->
+                                            historicalInventoryValidator.createTransaction(
+                                                    savedInventory, savedSuppliers, "CREATE", "COMPLETE" )
+                                    ).then()
                     );
         }));
     }
@@ -117,7 +122,11 @@ public class InventoryUseCase implements IInventoryServicePort {
                 .flatMap(inventory -> {
                     inventory.setStockActual(inventory.getStockActual() + cantidad);
                     inventory.setUpdatedAt(LocalDateTime.now());
-                    return inventoryPersistencePort.save(inventory).then();
+                    return inventoryPersistencePort.save(inventory).flatMap(savedInventory ->
+                            historicalInventoryValidator.createTransaction(
+                                    savedInventory, savedInventory.getSuppliers().get(0), "CREATE", "COMPLETE" )
+                    ).then();
                 });
     }
 }
+nsaction

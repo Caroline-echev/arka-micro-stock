@@ -1,6 +1,7 @@
 package com.arka.micro_stock.adapters.driven.webclient;
 
 import com.arka.micro_stock.adapters.driven.security.AuthenticationAdapter;
+import com.arka.micro_stock.domain.spi.IAuthenticationPersistencePort;
 import com.arka.micro_stock.domain.spi.IProductPersistencePort;
 import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -17,6 +18,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class ProductAdapter implements IProductPersistencePort {
 
+    private final IAuthenticationPersistencePort authenticationPersistencePort;
     private final WebClient catalogWebClient;
     private static final String PRODUCT_SERVICE = "productService";
 
@@ -25,7 +27,7 @@ public class ProductAdapter implements IProductPersistencePort {
     @Retry(name = PRODUCT_SERVICE)
     @Bulkhead(name = PRODUCT_SERVICE)
     public Mono<Boolean> existsById(Long id) {
-        return AuthenticationAdapter.getAuthorizationHeader()
+        return authenticationPersistencePort.getAuthorizationHeader()
                 .flatMap(authHeader ->
                         catalogWebClient.get()
                                 .uri("/exists/{id}", id)
